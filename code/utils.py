@@ -11,11 +11,13 @@ logger = logging.getLogger(__name__)
 S3_DEST_BUCKET = "aind-scratch-data"
 S3_DEST_PREFIX = "dynamic-routing/ibl-gui-output"
 
+FILE_FILTER: str | None = "ccf_channel_locations.json" # None to copy all files
+
 def _get_all_subfiles(
     client,
     computation_id: str,
     folder: codeocean.folder.Folder,
-    filename_filter: str | None = "ccf_channel_locations.json",
+    filename_filter: str | None = FILE_FILTER,
 ) -> list[codeocean.folder.FolderItem]:
     """Recursively fetch all bottom-level files matching filename_filter."""
     items = []
